@@ -14,7 +14,7 @@ interface ServiceWeather {
             @Query("units") units: String): Call<ResultWeather>
 
     @GET("forecast/daily")
-    fun getForecast(@Query("id") id: String,
+    fun getForecast(@Query("id") id: Long,
             @Query("appid") appId: String,
             @Query("units") units: String): Call<Forecast>
 

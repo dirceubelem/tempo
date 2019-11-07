@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.widget.Toast
 import br.com.cotemig.tempo.R
 import br.com.cotemig.tempo.helpers.DateTime
+import br.com.cotemig.tempo.models.Forecast
 import br.com.cotemig.tempo.models.Location
 import br.com.cotemig.tempo.models.ResultWeather
+import br.com.cotemig.tempo.models.Weather
 import br.com.cotemig.tempo.services.RetrofitInitializer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -74,11 +76,8 @@ class MainActivity : AppCompatActivity() {
                             temp.text = String.format("%.0f", it.temperature).plus("°")
                         }
 
-                        var datetime = DateTime(it.body().datetime!! * 1000)
-
-                        Toast.makeText(this@MainActivity, datetime.toString(), Toast.LENGTH_LONG).show()
-
-                        //temp.text = String.format("%.0f", it.body().data!!.temperature).plus("°")
+                        getForecast(it.body())
+                        //var datetime = DateTime(it.body().datetime!! * 1000)
 
                     }
 
@@ -92,6 +91,31 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+
+    }
+
+    fun getForecast(w: ResultWeather) {
+
+        var s = RetrofitInitializer().serviceWeather()
+
+        var call = s.getForecast(w.city!!, "7489ef6eb644acdd47a1ce5776d531bd", "metric")
+
+        call.enqueue(object : retrofit2.Callback<Forecast> {
+
+            override fun onResponse(call: Call<Forecast>?, response: Response<Forecast>?) {
+                response?.let {
+                    if (it.code() == 200) {
+
+
+
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<Forecast>?, t: Throwable?) {
+
+            }
+        })
 
     }
 }

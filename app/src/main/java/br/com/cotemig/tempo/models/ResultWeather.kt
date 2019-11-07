@@ -10,4 +10,7 @@ class ResultWeather {
     @SerializedName("dt")
     var datetime: Long? = null
 
+    @SerializedName("id")
+    var city: Long? = null
+
 }
