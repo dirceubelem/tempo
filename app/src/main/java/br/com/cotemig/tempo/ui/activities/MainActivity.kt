@@ -2,6 +2,7 @@ package br.com.cotemig.tempo.ui.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import br.com.cotemig.tempo.R
 import br.com.cotemig.tempo.helpers.DateTime
@@ -10,6 +11,7 @@ import br.com.cotemig.tempo.models.Location
 import br.com.cotemig.tempo.models.ResultWeather
 import br.com.cotemig.tempo.models.Weather
 import br.com.cotemig.tempo.services.RetrofitInitializer
+import br.com.cotemig.tempo.ui.adapters.ForecastAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import jp.wasabeef.glide.transformations.BlurTransformation
@@ -106,7 +108,9 @@ class MainActivity : AppCompatActivity() {
                 response?.let {
                     if (it.code() == 200) {
 
-
+                        list.adapter = ForecastAdapter(this@MainActivity, it.body().list)
+                        list.layoutManager = LinearLayoutManager(this@MainActivity,
+                            LinearLayoutManager.HORIZONTAL, false)
 
                     }
                 }

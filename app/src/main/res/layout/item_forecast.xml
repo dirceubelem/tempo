@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:background="@color/transparent">
 
-</LinearLayout>
+    <TextView
+            android:text="..."
+            android:layout_marginTop="19dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/robotolight"
+            android:id="@+id/weekday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:text="..."
+            android:layout_marginTop="19dp"
+            android:layout_below="@id/weekday"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/robotolight"
+            android:id="@+id/temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/temperature"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:id="@+id/container">
+
+        <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/orange2"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/graph">
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/container"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:layout_weight="1"
+                android:text="..."
+                android:layout_marginTop="19dp"
+                android:layout_below="@id/weekday"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/robotolight"
+                android:id="@+id/minimum"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:layout_weight="1"
+                android:text="..."
+                android:layout_marginTop="19dp"
+                android:layout_below="@id/weekday"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:fontFamily="@font/robotolight"
+                android:id="@+id/maximum"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
