@@ -1,10 +1,14 @@
 package br.com.cotemig.tempo.ui.adapters
 
 import android.content.Context
+import android.content.res.Resources
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import br.com.cotemig.tempo.R
 import br.com.cotemig.tempo.helpers.DateTime
@@ -42,6 +46,16 @@ class ForecastAdapter(var context: Context, var list: List<ForecastItem>?) :
             var maximum = itemView.findViewById<TextView>(R.id.maximum)
             maximum.text = String.format("%.0f", item.value!!.maximum).plus("°")
 
+            var graph = itemView.findViewById<RelativeLayout>(R.id.graph)
+            graph.layoutParams.height = (item.value!!.temperature!!.toInt()).px
+
         }
+
+        // criando uma extensão da classe Int
+        val Int.dp: Int
+            get() = (this / Resources.getSystem().displayMetrics.density).toInt()
+        val Int.px: Int
+            get() = (this * Resources.getSystem().displayMetrics.density).toInt()
     }
+
 }

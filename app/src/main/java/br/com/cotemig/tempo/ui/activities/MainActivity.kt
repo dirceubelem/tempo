@@ -79,7 +79,6 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         getForecast(it.body())
-                        //var datetime = DateTime(it.body().datetime!! * 1000)
 
                     }
 
